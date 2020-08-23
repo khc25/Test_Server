@@ -120,8 +120,10 @@ app.delete('/delete', (req, res) => {
 })
 
 
+const PORT = process.env.PORT || 8000
+
 //set port
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log('port listen on 8080')
 })
 
