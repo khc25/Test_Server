@@ -122,10 +122,7 @@ app.delete('/delete', (req, res) => {
 
 const PORT = process.env.PORT || 8000
 
-//set port
-app.listen(PORT, () => {
-    console.log('port listen on 8080')
-})
+
 
 
 
@@ -149,4 +146,9 @@ app.put('/transaction', (req, res) => {
 
     }))
     res.send('Your balance remaining is' + newBalance);
+})
+
+//set port
+app.listen(PORT, () => {
+    console.log('port listen on 8080')
 })
