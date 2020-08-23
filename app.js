@@ -62,8 +62,10 @@ app.get('/', async (req, res) => {
 
 app.post('/post', (req, res) => {
     //get request data: req.query / req.body / req.params
-    const q = req.query;
+    const q = req.body;
     console.log(req.query);
+    console.log(req.params)
+    console.log(req.body)
 
     //SQL post query , Structure: pool.query('query', [value1, value 2,...] , function());
     pool.query(`INSERT INTO test (name, email, msg) VALUES ($1, $2, $3) RETURNING id`,[q.name, q.email, q.msg], (err, res) => {
@@ -95,6 +97,7 @@ app.get('/getOne', async function (req, res) {
 //app.put
 app.put('/change' ,(req, res) => {
     var q = req.query;
+    
     console.log(q);
     pool.query("UPDATE test SET name = $2 WHERE id = $1", [q.id, q.name], (err, res) => {
         if(err) {
@@ -120,7 +123,7 @@ app.delete('/delete', (req, res) => {
 })
 
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8080
 
 
 
