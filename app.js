@@ -15,6 +15,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+//jwt
+const jwt = require('jwt-simple')
+const config = require('./config')
 
 //SQL
 const connectionString = "postgres://peodzzpi:Bt26r3XYTIzcb09VlwSuYxHK_O8HzUkb@isilo.db.elephantsql.com:5432/peodzzpi";
@@ -151,7 +154,29 @@ app.put('/transaction', (req, res) => {
     res.send('Your balance remaining is' + newBalance);
 })
 
+//login route
+
+app.post('/login', async (req, res) => {
+    var q = req.body
+    let user = await pool.query('SELECT * FROM test WHERE email = $1, msg = $2', [q.email, q.msg]);
+
+    if(user[0].email === q.email && user.msg[0] === q.msg) {
+        var payload = {
+            id: user[0].id,
+            email: user[0].email,
+            msg: user[0].msg,
+        }
+
+        var token = jwt.encode(payload, config.jwtSecret);
+        console.log(token);
+        res.send(token);
+    } else {
+        res.send('Error');
+    }
+})
+
 //set port
 app.listen(PORT, () => {
     console.log('port listen on 8080')
 })
+
