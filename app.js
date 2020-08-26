@@ -96,10 +96,10 @@ app.get('/getOne', async function (req, res) {
 
 //app.put
 app.put('/change' ,(req, res) => {
-    var q = req.query;
+    var q = req.body;
     
     console.log(q);
-    pool.query("UPDATE test SET name = $2 WHERE id = $1", [q.id, q.name], (err, res) => {
+    pool.query("UPDATE test SET name = $2, email = $3, msg = $4 WHERE id = $1", [q.id, q.name, q.email, q.msg], (err, res) => {
         if(err) {
             console.log(err);
         } else {

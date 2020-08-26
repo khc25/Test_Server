@@ -681,3 +681,10 @@
 [0mGET / [32m200[0m 220.155 ms - 868[0m
 [0mPOST /post?name= [32m200[0m 6.030 ms - 7[0m
 [0mGET / [32m200[0m 947.483 ms - 943[0m
+[0mGET /getOne?id=[object%20Object] [0m-[0m - ms - -[0m
+[0mGET /getOne?id=${id} [0m-[0m - ms - -[0m
+[0mGET /getOne?id=1 [32m200[0m 1193.573 ms - 65[0m
+[0mGET /getOne?id=1 [36m304[0m 1286.749 ms - -[0m
+[0mGET /getOne?id=1 [36m304[0m 1312.508 ms - -[0m
+[0mGET /getOne?id=1 [36m304[0m 1226.870 ms - -[0m
+[0mGET /getOne?id=1 [36m304[0m 1363.821 ms - -[0m
